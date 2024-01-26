@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-web-hello
+  labels:
+    app: k8s-web-hello
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-web-hello
+  template:
+    metadata:
+      name: k8s-web-hello
+      labels:
+        app: k8s-web-hello
+    spec:
+      containers:
+        - name: k8s-web-hello
+          image: ilysharusher/k8s-web-hello
+          ports:
+            - containerPort: 3000
+          imagePullPolicy: IfNotPresent
+      
