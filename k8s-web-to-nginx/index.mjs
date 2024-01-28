@@ -11,9 +11,14 @@ app.get('/', (req, res) => {
 });
 
 app.get('/nginx', async (req, res) => {
-    const url = 'http://nginx';
-    const response = await fetch(url);
+    const response = await fetch('http://nginx');
     const body = await response.text();
+    res.send(body);
+});
+
+app.get('/json-placeholder', async (req, res) => {
+    const response = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const body = await response.json();
     res.send(body);
 });
 
